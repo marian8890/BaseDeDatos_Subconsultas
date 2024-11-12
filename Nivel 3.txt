@@ -1,0 +1,22 @@
+Nivel 3
+
+1-Encuentra la nacionalidad del autor que escribió "Cien años de soledad"
+select nacionalidad from autores where autor_id = (select autor_id from libros where titulo='Cien años de soledad');
+
+2-Encuentra el nombre del usuario que tiene el préstamo más reciente
+select usuario from prestamos where fecha_prestamo = (select max(fecha_prestamo) from prestamos);
+
+3-Encuentra los títulos de los libros publicados por autores británicos
+select titulo from libros where autor_id in (select autor_id from autores where nacionalidad = 'Británica');
+
+4-Contar cuántos libros han sido prestados.
+select count(libro_id) from prestamos;
+
+5-Obtener el libro más antiguo (el que tiene el menor año de publicación).
+select titulo from libros where publicado_año = (select min(publicado_año) from libros);
+
+6-Obtener la cantidad de préstamos realizados por cada usuario, mostrando el nombre del usuario y la cantidad de préstamos.
+select libro_id from prestamos where fecha_prestamo = (select max(fecha_prestamo) from prestamos);
+
+
+7-Obtener el préstamo más reciente.
